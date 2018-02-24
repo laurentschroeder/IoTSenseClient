@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import socket
 import iot_parser
+import iot_json_parser
 
 passive_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 passive_socket.bind((socket.gethostname(), 2000))
@@ -12,12 +13,13 @@ while True:
     print('Got connection from', client_address)
 
     while True:
-        new_data = active_socket.recv(128)
+        new_data = active_socket.recv(256)
         #print(new_data)
         if not new_data:
             break
         else:
-            iot_parser.parse(new_data)
+            #iot_parser.parse(new_data)
+            iot_json_parser.parse_json(new_data)
     active_socket.close()
     print("Socket closed.")
     break
