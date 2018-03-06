@@ -31,14 +31,16 @@ def parse_json(received_bytes):
 
 
 def draw():
-    os.system('cls' if os.name == 'nt' else 'clear')
 
-    table_data = [('Messung', 'Wert', 'Einheit', 'Raum', 'SensorID', 'SubID', 'Bezeichnung', 'Zeitstempel')]
+
+    table_data    = [('Messung', 'Wert', 'Einheit', 'Raum', 'SensorID', 'SubID', 'Bezeichnung', 'Zeitstempel')]
 
     for e in sensors_dictionary:
         table_data.append(sensors_dictionary[e])
 
     table_instance = SingleTable(table_data, "IoT Sensors")
     table_instance.justify_columns[8] = 'left'
+    os.system('cls' if os.name == 'nt' else 'clear')
     print(table_instance.table, end='\r')
+
 
