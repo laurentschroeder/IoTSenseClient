@@ -7,8 +7,9 @@ import time
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect(('192.168.178.76', 2000))
 print('Connection established\n')
-time_string = input('Geben Sie das Datum im Format yyyy-mm-dd-hh-mm an:\n')
-s.sendall('set time '.encode() + time_string.encode('utf-8') + '\r\n'.encode())
+localtime = time.asctime(time.localtime(time.time()))
+#time_string = input('Geben Sie das Datum im Format yyyy-mm-dd-hh-mm an:\n')
+s.sendall('set time '.encode() + localtime.encode('utf-8') + '\r\n'.encode())
 s.close()
 
 passive_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
