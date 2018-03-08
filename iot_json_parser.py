@@ -6,9 +6,6 @@ sensors_dictionary = {}
 
 
 def parse_json(received_bytes):
-    # print(received_bytes)
-    # print(received_bytes.decode("utf-8"))
-
     # Convert received bytes to a string
     json_string = received_bytes.decode("utf-8")
 
@@ -42,5 +39,3 @@ def draw():
     table_instance.justify_columns[8] = 'left'
     os.system('cls' if os.name == 'nt' else 'clear')
     print(table_instance.table, end='\r')
-
-
